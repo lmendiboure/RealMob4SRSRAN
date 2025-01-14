@@ -1,0 +1,610 @@
+[
+    {
+        "timestamp": 1736771368.165,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            9,
+            4,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 64,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771368.165,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            11,
+            1,
+            2,
+            1
+        ],
+        "dl_mcs": 27,
+        "ul_mcs": 0,
+        "average_latency": 64,
+        "dl_brate": 25600.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771368.757,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            9,
+            1,
+            1,
+            4
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771368.757,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            3,
+            10,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771369.401,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            10,
+            2,
+            1,
+            2
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 63,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771369.401,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            1,
+            4,
+            3,
+            7
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 63,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771370.152,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            9,
+            3,
+            1,
+            2
+        ],
+        "dl_mcs": 26,
+        "ul_mcs": 0,
+        "average_latency": 62,
+        "dl_brate": 24320.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771370.152,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            1,
+            9,
+            3,
+            2
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 62,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771370.9980001,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            11,
+            1,
+            2,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 57,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771370.9980001,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            7,
+            1,
+            5,
+            2
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 57,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771371.902,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            3,
+            5,
+            1,
+            6
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 58,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771371.902,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            6,
+            2,
+            2,
+            5
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 58,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771372.795,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            11,
+            2,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 60,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771372.795,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            11,
+            1,
+            2,
+            1
+        ],
+        "dl_mcs": 27,
+        "ul_mcs": 0,
+        "average_latency": 60,
+        "dl_brate": 25600.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771373.629,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            2,
+            5,
+            1,
+            7
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 58,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771373.629,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            7,
+            1,
+            3,
+            4
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 58,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771374.358,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            4,
+            1,
+            2,
+            8
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771374.358,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            5,
+            7,
+            1,
+            2
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771375.098,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            11,
+            2,
+            1,
+            1
+        ],
+        "dl_mcs": 26,
+        "ul_mcs": 0,
+        "average_latency": 60,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771375.098,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            12,
+            1,
+            1,
+            1
+        ],
+        "dl_mcs": 27,
+        "ul_mcs": 0,
+        "average_latency": 60,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771375.9060001,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            9,
+            4,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 59,
+        "dl_brate": 24320.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771375.9060001,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            11,
+            2,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 59,
+        "dl_brate": 25600.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771376.507,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            2,
+            2,
+            1,
+            10
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 65,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771376.507,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            12,
+            1,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 65,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771377.103,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            9,
+            1,
+            4,
+            1
+        ],
+        "dl_mcs": 26,
+        "ul_mcs": 0,
+        "average_latency": 65,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771377.103,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            5,
+            2,
+            6,
+            2
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 65,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771377.861,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            8,
+            4,
+            2,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 60,
+        "dl_brate": 24320.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771377.861,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            2,
+            4,
+            6,
+            3
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 60,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771378.751,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            8,
+            3,
+            1,
+            3
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 59,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771378.751,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            7,
+            4,
+            1,
+            3
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 59,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771379.628,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            5,
+            6,
+            3,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 59,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771379.628,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            11,
+            2,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 59,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771380.333,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            6,
+            4,
+            2,
+            3
+        ],
+        "dl_mcs": 26,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 24320.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771380.333,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            3,
+            5,
+            1,
+            6
+        ],
+        "dl_mcs": 27,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 25600.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771380.9160001,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            5,
+            8,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771380.9160001,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            10,
+            3,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 61,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771381.503,
+        "ue": "UE1",
+        "cqi": 15,
+        "subbands": [
+            11,
+            2,
+            1,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 67,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    },
+    {
+        "timestamp": 1736771381.503,
+        "ue": "UE2",
+        "cqi": 15,
+        "subbands": [
+            2,
+            10,
+            2,
+            1
+        ],
+        "dl_mcs": 0,
+        "ul_mcs": 0,
+        "average_latency": 67,
+        "dl_brate": 0.0,
+        "ul_brate": 0.0
+    }
+]
