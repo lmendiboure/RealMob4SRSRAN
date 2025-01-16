@@ -18,6 +18,16 @@ Les prérequis : Ce dont vous avez besoin pour l’exécuter correctement (ex. b
 
 # Fichiers Disponibles dans le Dépôt
 Ce dépôt contient plusieurs fichiers essentiels pour la configuration et l’exécution des différents scénarios de mobilité. Voici une description détaillée des fichiers et de leur utilisation :
+
+### Fichiers yaml (amf, upf et smf)
+Les fichiers ```amf.yaml```, ```upf.yaml``` et ```smf.yaml``` sont des fichiers essentiels à la configuration du cœur de réseau Open5GS. Ils définissent les paramètres nécessaires pour le bon fonctionnement de chaque composant du réseau et leur interconnexion avec le gNB.
+
+Ces fichiers sont situés dans le répertoire suivant : ```/etc/open5gs/ ```
+
+Il est impératif de maintenir une cohérence entre ces fichiers YAML et le fichier de configuration du gNB. Les paramètres à vérifier incluent notamment :
+- Les adresses IP utilisées pour les interfaces du cœur de réseau (AMF, UPF et SMF) et leur correspondance avec les adresses IP configurées dans le fichier YAML du gNB.
+- Les ports spécifiés pour les communications entre les composants du cœur et le gNB.
+
 ### Fichiers de Configuration des UEs et gNBs
 - Des fichiers de configuration sont disponibles pour 4 UEs fonctionnant à des largeurs de bande de 10 Hz et 20 Hz.
 - Des fichiers de configuration sont également fournis pour un gNB configuré pour des bandes passantes de 10 Hz et 20 Hz.
