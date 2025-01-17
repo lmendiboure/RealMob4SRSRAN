@@ -12,9 +12,8 @@ Avant d’utiliser ce dépôt, assurez-vous que votre environnement est correcte
     Dépendances logicielles :
         Docker et Docker Compose
         GNU Radio
-        Python 3.11 et les bibliothèques nécessaires (voir requirements.txt).
-        Open5GS, srsRAN, et Oran-sc-ricSon objectif : Ce que le script accomplit (ex. collecte de métriques, génération de datasets).
-Les prérequis : Ce dont vous avez besoin pour l’exécuter correctement (ex. bibliothèques Python, configurations spécifiques).
+        Python 3.11 et les bibliothèques nécessaires.
+        Open5GS, srsRAN, et Oran-sc-ric
 
 # Fichiers Disponibles dans le Dépôt
 Ce dépôt contient plusieurs fichiers essentiels pour la configuration et l’exécution des différents scénarios de mobilité. Voici une description détaillée des fichiers et de leur utilisation :
@@ -80,7 +79,8 @@ L’xApp personnalisé, qui collecte et centralise les métriques des UEs et du 
 cd ./oran-sc-ric
 sudo docker compose exec python_xapp_runner2 ./simple_mon_xapp.py
 ```
-Cet xApp collectera des métriques clés, telles que le CQI, les débits (UL/DL), et la latence etc, et les sauvegardera dans un fichier JSON pour une analyse ultérieure.
+L'éxécuteur python ```python_xapp_runner2``` a été ajouté (docker-compose.yml du ric) pour répondre aux besoins de l'xApp crée. Cependant l'exécuteur ```python_xapp_runner``` donné par ORAN est conservé et doit etre utilisé les xApps fourni par ORAN SC RIC.
+Cet xApp crée collectera des métriques clés, telles que le CQI, les débits (UL/DL), et la latence etc, et les sauvegardera dans un fichier JSON pour une analyse ultérieure.
 
 ## 3 Scripts Réalisés(7 Python et 1 Shell), et Comment les Utiliser
 Ce dépôt contient huit scripts principaux (sept en Python et un en Shell) qui permettent de gérer, déployer et analyser l’infrastructure mise en place. Chaque script est conçu pour répondre à un besoin spécifique et peut être exécuté depuis le répertoire où il est placé dans le dépôt Git.
@@ -107,6 +107,8 @@ Pour l’instant, le script lancement.sh permet de lancer jusqu’à 2 gNBs sans
 - Ajouter une nouvelle boucle ou commande dans le fichier lancement.sh pour gérer les gNBs supplémentaires.
 - Modifier les configurations associées (adresses IP, ports, etc.) dans les fichiers neceessaires.
 
+NB: Pour intégrer ORAN SC RIC dans cet environnement, il faudra autant de RIC que de gNB ( un ric pour un gNB).
+
 Le script est conçu pour être flexible et extensible, permettant ainsi de gérer des architectures plus complexes avec peu d’effort.
 
 ### Personnalisation et Flexibilité
@@ -128,6 +130,19 @@ Chaque script contient une description en tête de fichier pour expliquer :
 - Les prérequis : Ce dont vous avez besoin pour l’exécuter correctement (ex. bibliothèques Python, configurations spécifiques).
 
 ### Envoie des metrics à influxDB
+Un autre conteneur ``` influxdb1``` a été ajouté dans le docker-compose.yml (celui dans /srsRAN_Project/docker/) pour ajouter une autre instance d'InfluxDB. 
+Ce conteneur devrait créer un compte utilisateur influxdb qui sera donc accessible sur http://localhost:8087/.
+Cependant ce compte peut ne pas être crée, et pourra donc être crée avec ceci:
+```bash
+sudo docker exec -it influxdb1 influx setup \
+--username admin1 \
+--password admin12345 \
+--org srs1 \
+--bucket srsran1 \
+--token 605bc59413b7d5457d181ccf20f9fda15693f81b068d70396cc183081b264fbb \
+--host http://localhost:8087
+```
+Si vous changez un de ces paramétres lors de la création du compte, Faites de même sur le script ```envoie_influxdb.py```!
 L’envoi des métriques à la base de données InfluxDB est réalisé grâce au script ```envoie_influxdb.py```. Ce script permet de transférer en temps réel les métriques générées par les UEs vers InfluxDB, facilitant leur visualisation et leur analyse ultérieure.
 
 Lors du premier déploiement, il est nécessaire de s’assurer que les fichiers nécessaires existent avant de lancer le script. Pour cela, il faut d’abord démarrer les UEs (sans lancer GNU Radio), puis les arrêter immédiatement après. Cette étape permet aux UEs de créer les fichiers nécessaires pour le fonctionnement du script.
@@ -136,4 +151,12 @@ Une fois les fichiers générés, le script ```envoie_influxdb.py``` doit être 
 
 ### Génération des Datasets
 La génération des datasets repose sur deux scripts principaux : ```metrics_udp_receiver.py``` et ```subband.py```. Le premier est utilisé pour collecter en temps réel les métriques réseau transmises par le gNB via le protocole UDP. Ce script doit être lancé après le démarrage du gNB et peut être lancé avant ou après le lancement des UEs. Une fois les métriques collectées, le script subband.py est utilisé pour les traiter et les enrichir. Ce dernier, exécuté à la fin de l’expérience après l’arrêt de metrics_udp_receiver.py, calcule notamment les subbands CQI en décomposant le CQI global en plusieurs sous-valeurs. Les données finales sont ensuite sauvegardées dans des fichiers JSON, constituant les datasets nécessaires pour les analyses ou les expérimentations futures.
+
+### Récupération des dashboards de grafana en image (png)
+Un contenneur renderer(nom à conserver) a été ajouté sur le fichier docker-compose.yml (celui dans /srsRAN_Project/docker/) et lié à grafana. 
+Voici les étapes à faire pour récupérer les limages depuis l'interface grafana:
+- Sur tableau de bord à exporter, en haut à droite, cliquez sur les trois points verticaux pour ouvrir un menu supplémentaire.
+- Dans ce menu, cliquez sur l'option "Share".
+- Une fois dans l'interface Share, vous verrez plusieurs options de personnalisation pour l'exportation :
+  - Vous pouvez choisir le thème de l'image : soit le thème par défaut (noir), dark, ou light. Si vous voulez que le fond de l'image soit blanc, choisissez light.
 
