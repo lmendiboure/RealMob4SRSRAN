@@ -1,162 +1,174 @@
 # Description
 
-Le dépôt contient l’ensemble des configurations, scripts, et outils nécessaires pour déployer et tester une infrastructure 5G O-RAN, avec des scénarios de mobilité. 
-Il a été développé dans le cadre d’un stage au Laboratoire d’Informatique Gaspard-Monge (LIGM).
+The repository contains all the configurations, scripts and tools needed to deploy and test a 5G O-RAN infrastructure, with mobility scenarios. 
+
+Ndeye Birame DIA, Massamaesso NAROUWA and Léo MENDIBOURE are the main contributors to this work.
+
+This code is currently being used to produce an article that is currently being evaluated.
 
 
-# Prérequis
+# Prerequisites
 
-Avant d’utiliser ce dépôt, assurez-vous que votre environnement est correctement configuré :
+Before using this repository, please ensure that your environment is correctly configured:
+- Linux (Ubuntu 22.04 recommended but Ubuntu 24.04 also tested).
+- Docker and Docker Compose
+- GNU Radio Companion
+- Python 3.11 and the necessary libraries
+- Open5GS, srsRAN, et ORAN SC RIC (this last one is not required to reproduce the article results)
 
-    Systèmes requis : Linux (Ubuntu 22.04 recommandé).
-    Dépendances logicielles :
-        Docker et Docker Compose
-        GNU Radio
-        Python 3.11 et les bibliothèques nécessaires.
-        Open5GS, srsRAN, et Oran-sc-ric
+# Files Available in the Repository
 
-# Fichiers Disponibles dans le Dépôt
-Ce dépôt contient plusieurs fichiers essentiels pour la configuration et l’exécution des différents scénarios de mobilité. Voici une description détaillée des fichiers et de leur utilisation :
+This repository contains a number of files that are essential for configuring and running the various mobility scenarios. Here is a detailed description of the files and how they are used:
 
-### Fichiers yaml (amf, upf et smf)
-Les fichiers ```amf.yaml```, ```upf.yaml``` et ```smf.yaml``` sont des fichiers essentiels à la configuration du cœur de réseau Open5GS. Ils définissent les paramètres nécessaires pour le bon fonctionnement de chaque composant du réseau et leur interconnexion avec le gNB.
+### Yaml files (amf, upf and smf)
+The ``amf.yaml``, ``upf.yaml`` and ```smf.yaml`` files are essential for configuring the Open5GS network core. They define the parameters required for the correct operation of each network component and their interconnection with the gNB.
 
-Ces fichiers sont situés dans le répertoire suivant : ```/etc/open5gs/ ```
+These files are located in the following directory: ``/etc/open5gs/ ````.
 
-Il est impératif de maintenir une cohérence entre ces fichiers YAML et le fichier de configuration du gNB. Les paramètres à vérifier incluent notamment :
-- Les adresses IP utilisées pour les interfaces du cœur de réseau (AMF, UPF et SMF) et leur correspondance avec les adresses IP configurées dans le fichier YAML du gNB.
-- Les ports spécifiés pour les communications entre les composants du cœur et le gNB.
+It is essential to maintain consistency between these YAML files and the gNB configuration file. Parameters to check include
+- The IP addresses used for the core network interfaces (AMF, UPF and SMF) and their correspondence with the IP addresses configured in the gNB YAML file.
+- The ports specified for communications between the core components and the gNB.
 
-### Fichiers de Configuration des UEs et gNBs
-- Des fichiers de configuration sont disponibles pour 4 UEs fonctionnant à des largeurs de bande de 10 Hz et 20 Hz.
-- Des fichiers de configuration sont également fournis pour un gNB configuré pour des bandes passantes de 10 Hz et 20 Hz.
-- Pour le cas d’un déploiement avec deux gNBs, des fichiers spécifiques sont fournis : ```gnb1.yaml``` et ```gnb2.yaml```, chacun configuré pour un gNB distinct.
+### Configuration files for UEs and gNBs
+- Configuration files are available for 4 UEs operating at bandwidths of 10 Hz and 20 Hz.
+- Configuration files are also provided for one gNB configured for 10 Hz and 20 Hz bandwidths.
+- For a deployment with two gNBs, specific files are provided: ```gnb1.yaml`` and ```gnb2.yaml``, each configured for a separate gNB.
 
-### Fichiers GNU Radio (GRC)
-Plusieurs fichiers GNU Radio Companion (GRC) sont disponibles pour simuler différents scénarios.
-Les fichiers GRC sont nommés en suivant une convention claire : ngnb_scenariom.grc, où :
-- n représente le nombre de gNBs.
-- m représente le nombre d’UEs.
-- Par exemple :
-    - 1gnb_scenario4.grc correspond à une simulation avec 1 gNB et 4 UEs.
-    - 2gnb_scenario3.grc correspond à une simulation avec 2 gNBs et 3 UEs.
-      
-### Fichiers JSON pour les Datasets
-Les fichiers JSON générés représentent les datasets produits pour les cinq scénarios de mobilité, grâce au script ```subband.py```.
-
-Voici une description de chaque scénario :
-
-#### Scenario 1 :
-Ce scénario implique quatre UEs se déplaçant à une vitesse de 60 km/h. L’UE1 reste fixe à une distance constante de 500m par rapport au gNB, tandis que les trois autres UEs (UE2, UE3, et UE4) se déplacent dans le sens positif, avec des positions initiales respectives de X0=100, −900, et 700.
-
-#### Scenario 2 :
-Ce scénario est similaire au précédent, sauf que les UEs se déplacent dans le sens négatif.
-
-#### Scenario 3 :
-Dans ce scénario, l’UE1 n’est plus fixe et commence à X0=−300, se déplaçant dans le sens positif avec UE2. Les UE3 et UE4, quant à eux, se déplacent dans le sens négatif.
-
-#### Scenario 4 :
-Ce scénario met en scène deux UEs se déplaçant dans des directions opposées.
-L’UE1 commence à X0=1500 et se déplace dans le sens négatif.
-L’UE2 commence à X0=−1300 et se déplace dans le sens positif.
-
-#### Scenario 5 :
-Ce dernier scénario reprend les positions initiales du scénario 4, mais cette fois, les deux UEs se déplacent tous les deux dans le sens positif.
+### GNU Radio files (GRC)
+Several GNU Radio Companion (GRC) files are available to simulate different scenarios.
+GRC files are named according to a clear convention: ngnb_scenariom.grc, where :
+- n represents the number of gNBs.
+- m represents the number of UEs.
+- For example :
+- 1gnb_scenario4.grc corresponds to a simulation with 1 gNB and 4 SUs.
+- 2gnb_scenario3.grc corresponds to a simulation with 2 gNBs and 3 SUs.
 
 
-# Instructions d’Utilisation
+# Operating Instructions
 
-## 1 Lancement des Composants de Base
-Pour lancer les composants de base nécessaires au déploiement de la plateforme (comme le gNB, le cœur de réseau (5GC), et le Near-RT-RIC etc), vous pouvez suivre le guide détaillé
-disponible sur la documentation officielle de srsRAN : https://docs.srsran.com/projects/project/en/latest/tutorials/source/near-rt-ric/source/index.html 
+## 1 Launching the Basic Components
+To launch the basic components needed to deploy the platform (such as the gNB, the network core (5GC), and the Near-RT-RIC etc), you can follow the detailed guide
+available in the official srsRAN documentation: https://docs.srsran.com/projects/project/en/latest/tutorials/source/near-rt-ric/source/index.html 
 
-Pour le lancement de Grafana, qui permet la visualisation des métriques, vous pouvez consulter la documentation ici : https://docs.srsran.com/projects/project/en/latest/user_manuals/source/grafana_gui.html
+To launch Grafana, which allows you to view metrics, you can consult the documentation here: https://docs.srsran.com/projects/project/en/latest/user_manuals/source/grafana_gui.html
 
 
-## 2 Lancement de l'xApp pour la Remontée des Métriques
-L’xApp personnalisé, qui collecte et centralise les métriques des UEs et du gNB, doit être lancé dans le conteneur Docker du RIC. Voici comment le démarrer :
+## 2 Launching the xApp for metrics feedback
+The custom xApp, which collects and centralises metrics from UEs and gNB, needs to be launched in the RIC's Docker container. Here's how to start it:
+
 ```bash
 cd ./oran-sc-ric
 sudo docker compose exec python_xapp_runner2 ./simple_mon_xapp.py
 ```
-L'éxécuteur python ```python_xapp_runner2``` a été ajouté (docker-compose.yml du ric) pour répondre aux besoins de l'xApp crée. Cependant l'exécuteur ```python_xapp_runner``` donné par ORAN est conservé et doit etre utilisé les xApps fourni par ORAN SC RIC.
-Cet xApp crée collectera des métriques clés, telles que le CQI, les débits (UL/DL), et la latence etc, et les sauvegardera dans un fichier JSON pour une analyse ultérieure.
+The python executor ``python_xapp_runner2`` has been added (docker-compose.yml from the ric) to meet the needs of the xApp created. However the ``python_xapp_runner`` executor given by ORAN is kept and must be used for xApps provided by ORAN SC RIC.
 
-## 3 Scripts Réalisés(7 Python et 1 Shell), et Comment les Utiliser
-Ce dépôt contient huit scripts principaux (sept en Python et un en Shell) qui permettent de gérer, déployer et analyser l’infrastructure mise en place. Chaque script est conçu pour répondre à un besoin spécifique et peut être exécuté depuis le répertoire où il est placé dans le dépôt Git.
+This xApp created will collect key metrics, such as CQI, throughput (UL/DL), and latency etc, and save them to a JSON file for later analysis.
 
-### Lancer les Scripts
-Pour exécuter un script Python, utilisez la commande suivante :
+## 3 Scripts Made (7 Python and 1 Shell), and How to Use Them
+
+This repository contains eight main scripts (seven in Python and one in Shell) used to manage, deploy and analyse the infrastructure. Each script is designed to meet a specific need and can be run from the directory where it is placed in the Git repository.
+
+### Running scripts
+
+To run a Python script, use the following command :
+
 ```bash
-python3.11 nom_du_script.py  
+python3.11 script_name.py  
 ```
-Le script Shell, nommé lancement.sh, se lance avec la commande suivante :
+The Shell script, called launch.sh, is launched with the following command:
 
 ```bash
-./lancement.sh <nombre_gnb> <nombre_ue> <nombre_ric>  
+./launch.sh <nombre_gnb> <nombre_ue> <nombre_ric>  
 ```
-Par exemple, pour déployer 1 gNB, 4 UEs, et 1 RIC :
+For example, to deploy 1 gNB, 4 UEs, and 1 RIC :
 ```bash
-./lancement.sh 1 4 1  
+./launch.sh 1 4 1  
 ```
 
-### Limites Actuelles
+### Current limits
 
-Pour l’instant, le script lancement.sh permet de lancer jusqu’à 2 gNBs sans intégrer de RIC. Cependant, il est facile de rajouter des gNBs ou de configurer le lancement du RIC. Il suffit de :
+For the moment, the launch.sh script can launch up to 2 gNBs without integrating a RIC. However, it is easy to add gNBs or configure the RIC launch. Simply :
 
-- Ajouter une nouvelle boucle ou commande dans le fichier lancement.sh pour gérer les gNBs supplémentaires.
-- Modifier les configurations associées (adresses IP, ports, etc.) dans les fichiers neceessaires.
+- Add a new loop or command in the launch.sh file to manage the additional gNBs.
+- Modify the associated configurations (IP addresses, ports, etc.) in the necessary files.
 
-NB: Pour intégrer ORAN SC RIC dans cet environnement, il faudra autant de RIC que de gNB ( un ric pour un gNB).
+NB: To integrate ORAN SC RIC in this environment, you will need as many RICs as gNBs (one ric for one gNB).
 
-Le script est conçu pour être flexible et extensible, permettant ainsi de gérer des architectures plus complexes avec peu d’effort.
+The script is designed to be flexible and extensible, allowing more complex architectures to be managed with little effort.
 
-### Personnalisation et Flexibilité
-Le script ```lancement.sh``` est conçu pour être flexible. Avant de l’exécuter, certaines modifications peuvent être nécessaires pour l’adapter à votre environnement :
-- Répertoires : Réajustez les chemins des répertoires en fonction de l’endroit où les fichiers sont placés.
-- Comptes utilisateurs : Modifiez les mots de passe ou identifiants utilisés dans le script pour qu’ils correspondent à votre configuration.
-- Ajouts personnalisés : Ce script est suffisamment flexible pour permettre l’ajout de nouvelles fonctionnalités ou de composants supplémentaires si besoin.
+### Customisation and Flexibility
+The launch.sh script is designed to be flexible. Before running it, some modifications may be necessary to adapt it to your environment:
+- Directories: Readjust the directory paths depending on where the files are located.
+- User accounts: Modify the passwords or identifiers used in the script so that they match your configuration.
+- Custom additions: This script is flexible enough to allow new features or additional components to be added if required.
 
-### Emplacement des Scripts
-Certains scripts Python sont situés dans :
+### Location of Scripts
+Some Python scripts are located in :
 ```bash
-/srsRAN_Project/build/apps/gnb/    
+/srsRAN_Project/build/apps/gnb/ 
 ```
-Les autres scripts Python et le script Shell se trouvent dans le même répertoire que le dossier ```srsRAN_Project```.
+Other Python scripts and the Shell script are located in the same directory as the ```srsRAN_Project``` folder.
 
-### Descriptions des Scripts
-Chaque script contient une description en tête de fichier pour expliquer :
-- Son objectif : Ce que le script accomplit (ex. collecte de métriques, génération de datasets).
-- Les prérequis : Ce dont vous avez besoin pour l’exécuter correctement (ex. bibliothèques Python, configurations spécifiques).
+### Script descriptions
+Each script contains a description at the top of the file explaining :
+- Its purpose: What the script does (e.g. collecting metrics, generating datasets).
+- Prerequisites: what you need to run it properly (e.g. Python libraries, specific configurations).
 
-### Envoie des metrics à influxDB
-Un autre conteneur ``` influxdb1``` a été ajouté dans le docker-compose.yml (celui dans /srsRAN_Project/docker/) pour ajouter une autre instance d'InfluxDB. 
-Ce conteneur devrait créer un compte utilisateur influxdb qui sera donc accessible sur http://localhost:8087/.
-Cependant ce compte peut ne pas être crée, et pourra donc être crée avec ceci:
+### Sending metrics to influxDB
+Another ``influxdb1`` container has been added to the docker-compose.yml (the one in /srsRAN_Project/docker/) to add another instance of InfluxDB. 
+This container should create an influxdb user account that can be accessed at http://localhost:8087/.
+However, this account may not be created, and can therefore be created with this:
 ```bash
 sudo docker exec -it influxdb1 influx setup \
 --username admin1 \
---password admin12345 \
+--password admin12345
 --org srs1 \
 --bucket srsran1 \
 --token 605bc59413b7d5457d181ccf20f9fda15693f81b068d70396cc183081b264fbb \
 --host http://localhost:8087
 ```
-Si vous changez un de ces paramétres lors de la création du compte, Faites de même sur le script ```envoie_influxdb.py```!
-L’envoi des métriques à la base de données InfluxDB est réalisé grâce au script ```envoie_influxdb.py```. Ce script permet de transférer en temps réel les métriques générées par les UEs vers InfluxDB, facilitant leur visualisation et leur analyse ultérieure.
+If you change one of these parameters when you create the account, do the same with the ``influxdb_send.py`` script!
+Metrics are sent to the InfluxDB database using the ``envoie_influxdb.py`` script. This script transfers the metrics generated by the UEs to InfluxDB in real time, making them easier to view and analyse at a later date.
 
-Lors du premier déploiement, il est nécessaire de s’assurer que les fichiers nécessaires existent avant de lancer le script. Pour cela, il faut d’abord démarrer les UEs (sans lancer GNU Radio), puis les arrêter immédiatement après. Cette étape permet aux UEs de créer les fichiers nécessaires pour le fonctionnement du script.
+When deploying for the first time, it is necessary to ensure that the necessary files exist before running the script. To do this, first start the UEs (without running GNU Radio), then stop them immediately afterwards. This step allows the UEs to create the files needed for the script to run.
 
-Une fois les fichiers générés, le script ```envoie_influxdb.py``` doit être lancé avant de relancer les UEs pour que les métriques puissent être surveillées et envoyées en temps réel à InfluxDB.
+Once the files have been generated, the ``envoie_influxdb.py`` script must be run before restarting the UEs so that the metrics can be monitored and sent to InfluxDB in real time.
 
-### Génération des Datasets
-La génération des datasets repose sur deux scripts principaux : ```metrics_udp_receiver.py``` et ```subband.py```. Le premier est utilisé pour collecter en temps réel les métriques réseau transmises par le gNB via le protocole UDP. Ce script doit être lancé après le démarrage du gNB et peut être lancé avant ou après le lancement des UEs. Une fois les métriques collectées, le script subband.py est utilisé pour les traiter et les enrichir. Ce dernier, exécuté à la fin de l’expérience après l’arrêt de metrics_udp_receiver.py, calcule notamment les subbands CQI en décomposant le CQI global en plusieurs sous-valeurs. Les données finales sont ensuite sauvegardées dans des fichiers JSON, constituant les datasets nécessaires pour les analyses ou les expérimentations futures.
+### Dataset generation
+Dataset generation is based on two main scripts: metrics_udp_receiver.py and subband.py. The first is used to collect real-time network metrics transmitted by the gNB via the UDP protocol. This script must be run after the gNB is started and can be run before or after the UEs are launched. Once the metrics have been collected, the subband.py script is used to process and enrich them. This script, which is run at the end of the experiment after metrics_udp_receiver.py has been stopped, calculates the IQC subbands by breaking down the overall IQC into several sub-values. The final data is then saved in JSON files, constituting the datasets required for future analysis or experimentation.
 
-### Récupération des dashboards de grafana en image (png)
-Un contenneur renderer(nom à conserver) a été ajouté sur le fichier docker-compose.yml (celui dans /srsRAN_Project/docker/) et lié à grafana. 
-Voici les étapes à faire pour récupérer les limages depuis l'interface grafana:
-- Sur tableau de bord à exporter, en haut à droite, cliquez sur les trois points verticaux pour ouvrir un menu supplémentaire.
-- Dans ce menu, cliquez sur l'option "Share".
-- Une fois dans l'interface Share, vous verrez plusieurs options de personnalisation pour l'exportation :
-  - Vous pouvez choisir le thème de l'image : soit le thème par défaut (noir), dark, ou light. Si vous voulez que le fond de l'image soit blanc, choisissez light.
+### Retrieving grafana dashboards as images (png)
+A renderer container (name to be retained) has been added to the docker-compose.yml file (the one in /srsRAN_Project/docker/) and linked to grafana. 
+Here are the steps to take to retrieve the files from the grafana interface:
+- On the dashboard to be exported, in the top right-hand corner, click on the three vertical dots to open an additional menu.
+- In this menu, click on the ‘Share’ option.
+- Once in the Share interface, you'll see several customisation options for the export:
+- You can choose the theme of the image: either the default theme (black), dark, or light. If you want the background of the image to be white, choose light.
 
+
+### JSON files for datasets
+
+The JSON files generated represent the datasets produced for the five mobility scenarios, thanks to the ```subband.py`` script.
+
+Here is a description of each scenario:
+
+#### Scenario 1:
+
+This scenario involves four UEs travelling at a speed of 60 km/h. UE1 remains fixed at a constant distance of 500m from the gNB, while the other three UEs (UE2, UE3, and UE4) move in the positive direction, with initial positions of X0=100, -900, and 700 respectively.
+
+#### Scenario 2:
+
+This scenario is similar to the previous one, except that the UEs move in the negative direction.
+
+#### Scenario 3:
+
+In this scenario, UE1 is no longer fixed and starts at X0=-300, moving in the positive direction with UE2. UE3 and UE4 move in the negative direction.
+
+#### Scenario 4:
+
+This scenario involves two UEs moving in opposite directions:
+- UE1 starts at X0=1500 and moves in the negative direction.
+- UE2 starts at X0=-1300 and moves in the positive direction.
+
+#### Scenario 5:
+This last scenario repeats the initial positions of scenario 4, but this time the two UEs both move in the positive direction.
