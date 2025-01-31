@@ -1,25 +1,25 @@
 """
-Description : Ce script surveille plusieurs fichiers CSV pour détecter les modifications 
-et envoie les métriques extraites vers une base de données InfluxDB. Il utilise la bibliothèque 
-`watchdog` pour observer les changements dans les fichiers et traite les données en temps réel 
-grâce à des threads et une file d'attente.
+Description: This script monitors several CSV files for modifications 
+and sends the extracted metrics to an InfluxDB database. It uses the 
+`watchdog` library to observe changes in the files and processes the data in real time 
+using threads and a queue.
 
-Fonctionnalités principales :
-- Surveillance de plusieurs fichiers CSV pour détecter les modifications.
-- Extraction des colonnes et conversion des valeurs en types appropriés (entiers, flottants, etc.).
-- Agrégation des métriques et ajout d'informations sur la source des données.
-- Envoi des données traitées à InfluxDB via l'API de son client.
-- Gestion simultanée des fichiers et des connexions à la base de données à l'aide de threads.
+Key features:
+- Monitors multiple CSV files for changes.
+- Extraction of columns and conversion of values into appropriate types (integers, floats, etc.).
+- Aggregate metrics and add information about the data source.
+- Send processed data to InfluxDB via its client API.
+- Simultaneous management of files and database connections using threads.
 
-Prérequis :
-- Installez les bibliothèques nécessaires (`watchdog`, `influxdb_client`, etc.).
-- Configurez les informations d'accès à votre instance InfluxDB (URL, jeton, organisation, bucket).
-- Assurez-vous que les fichiers CSV à surveiller existent dans les chemins spécifiés.
+Prerequisites:
+- Install the necessary libraries (`watchdog`, `influxdb_client`, etc.).
+- Configure the access information for your InfluxDB instance (URL, token, organisation, bucket).
+- Ensure that the CSV files to be monitored exist in the specified paths.
 
-Remarque importante : 
-- Le nombre de fichiers CSV surveillés (nombre d'UE) correspond au nombre de chemins spécifiés dans la liste `file_paths`. 
-  Pour surveiller plus ou moins de fichiers, modifiez cette liste en ajoutant ou supprimant des chemins de fichiers.
-  Assurez-vous que chaque fichier correspond aux exigences du traitement (format CSV).
+Important note: 
+- The number of CSV files monitored (number of SUs) corresponds to the number of paths specified in the `file_paths` list. 
+To monitor more or fewer files, modify this list by adding or removing file paths.
+Ensure that each file corresponds to the processing requirements (CSV format).
 
 """
 
