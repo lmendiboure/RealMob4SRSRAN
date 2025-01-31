@@ -1,16 +1,16 @@
 """
 
-Description : Ce script surveille un fichier CSV spécifié et ajoute un horodatage pour chaque nouvelle ligne ajoutée. 
-Les données avec horodatage sont écrites dans un fichier de sortie. Cela est utile pour suivre les modifications 
-en temps réel sur le fichier d'entrée.
+Description: This script monitors a specified CSV file and adds a timestamp for each new line added. 
+The timestamped data is written to an output file. This is useful for tracking changes 
+on the input file.
 
-Fonctionnalités principales :
-- Surveillance des modifications d'un fichier CSV en utilisant la bibliothèque `watchdog`.
-- Ajout automatique d'un horodatage (timestamp) pour chaque nouvelle ligne détectée.
+Main features:
+- Monitor changes to a CSV file using the `watchdog` library.
+- Automatically adds a timestamp for each new line detected.
 
-Prérequis :
-- La bibliothèque `watchdog` installée (`pip install watchdog`).
-- Chemins d'accès valides pour les fichiers d'entrée et de sortie.
+Prerequisite:
+- The `watchdog` library installed (`pip install watchdog`).
+- Valid paths for input and output files.
 
 """
 
@@ -33,8 +33,8 @@ class ObservateurFichier(FileSystemEventHandler):
 
     def on_modified(self, event):
         """
-        Méthode appelée lorsque le fichier surveillé est modifié.
-        :param event: Événement de modification détecté par watchdog.
+       Method called when the file being monitored is modified.
+        : param event: Modification event detected by watchdog.
         """
         if event.src_path == self.chemin_fichier:
             with open(self.chemin_fichier, 'r') as fichier:
